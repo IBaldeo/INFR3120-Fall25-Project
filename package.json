@@ -1,0 +1,12 @@
+{
+  "name": "assignmenttwo",
+  "version": "1.0.0",
+  "description": "Assignment 2",
+  "license": "ISC",
+  "author": "Ali Adnan Khan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
