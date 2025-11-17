@@ -1,0 +1,10 @@
+/* Custom CSS Goes Here */
+
+html, body {
+    background-color: #21262b;
+}
+
+.title-section {
+    color: white;
+    background-color: #21262b;
+}
