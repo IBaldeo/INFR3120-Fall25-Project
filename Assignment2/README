@@ -1,1 +1,0 @@
-Code is either my own, class work, and bootstrap, fontawesome and videos from class.

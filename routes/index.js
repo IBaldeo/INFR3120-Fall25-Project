@@ -6,14 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home Page' });
 });
 
-/* GET about me page. */
-router.get('/aboutme', function(req, res, next) {
-  res.render('index', { title: 'About Me' });
+/* GET submit page. */
+router.get('/submit', function(req, res, next) {
+  res.render('index', { title: 'Submit Page' });
 });
 
-/* GET project page. */
-router.get('/project', function(req, res, next) {
-  res.render('index', { title: 'Project Page' });
+/* GET incidents page. */
+router.get('/incidents', function(req, res, next) {
+  res.render('index', { title: 'Incidents Page' });
 });
 
 /* GET contact us page. */
