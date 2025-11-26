@@ -25,6 +25,11 @@ module.exports = function (passport) {
         })
     );
 
+     passport.serializeUser((user, done) => {
+        console.log("SERIALIZING USER →", user._id);
+        done(null, user._id);
+    });
+
 
    passport.deserializeUser(async (id, done) => {
     try {
