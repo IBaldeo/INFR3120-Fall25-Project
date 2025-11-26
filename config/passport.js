@@ -25,6 +25,11 @@ module.exports = function (passport) {
         })
     );
 
+    passport.serializeUser((user, done) => {
+    console.log("🔵 SERIALIZE USER:", user);
+    done(null, user.id);
+});
+
    passport.deserializeUser(async (id, done) => {
     try {
         const user = await User.findById(id);
