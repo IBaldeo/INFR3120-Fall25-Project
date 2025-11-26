@@ -1,5 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+require('./config/passport')(passport);
 
 let createError = require('http-errors');
 let express = require('express');
@@ -27,8 +30,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
 
+app.use(session({secret: 'secret', resave: false, saveUninitialized: false}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+});
+
+
+app.use('/', require('./routes/auth'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 var incidentsRouter = require('./routes/incidents');

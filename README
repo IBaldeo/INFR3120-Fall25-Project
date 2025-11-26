@@ -8,8 +8,8 @@ The incident management system would essentially take values from the user which
 numbers, text and date data and then push that data into a makeshift online database, which then
 would be displayed on a makeshift dashboard on another page. 
 
-Later on, a login system would be implemented that would allow users to create incidents and view
-incidents. This would be very important so that random people that stumble upon the site cannot, view
+In this version the login system is implemented that allows users to create incidents and view
+incidents only if they have a valid email and password combination. This is very important so that random people that stumble upon the site cannot view
 or create incidents.
 
 Member Roles:

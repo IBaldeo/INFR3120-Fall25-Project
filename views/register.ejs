@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+    <h1>Register</h1>
+
+    <% if (typeof errors !== 'undefined') { %>
+        <ul style="color:red;">
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <form action="/register" method="POST">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" value="<%= typeof name !== 'undefined' ? name : '' %>" required>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" value= "<%= typeof email !== 'undefined' ? email : '' %>" required>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div>
+            <label>Confirm Password</label>
+            <input type="password" name="password2" required>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Login here!</a></p>
+    <p><a href="/"> Return to Home</a></p>
+
+</body>
+</html>

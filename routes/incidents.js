@@ -1,17 +1,17 @@
-
+const { ensureAuthenticated } = require('../middleware/auth');
 var express = require('express');
 var router = express.Router();
 
 const IncidentReport = require('../models/IncidentReport');
 
 //Creates Incident Forms
-router.get('/new', function(req, res) {
+router.get('/new', ensureAuthenticated, function(req, res) {
   console.log("HIT /incidents/new");
   res.render('incident_form', { title: "New Incident Report" });
 });
 
 // Edit Incident Form
-router.get('/:id/edit', async function (req, res) {
+router.get('/:id/edit', ensureAuthenticated, async function (req, res) {
   try {
     const incident = await IncidentReport.findById(req.params.id);
 
@@ -27,7 +27,7 @@ router.get('/:id/edit', async function (req, res) {
 });
 
 // Display Incident Form
-router.get('/', async function (req, res) {
+router.get('/', ensureAuthenticated, async function (req, res) {
   try {
     const incidents = await IncidentReport.find().sort({ date: -1 }); // newest first
     res.render('incidents_list', { title: "All Incident Reports", incidents });
@@ -38,7 +38,7 @@ router.get('/', async function (req, res) {
 });
 
 // POST New Incident
-router.post('/', async function (req, res) {
+router.post('/', ensureAuthenticated, async function (req, res) {
   try {
     const { title, description, date, user } = req.body;
 
@@ -59,7 +59,7 @@ router.post('/', async function (req, res) {
 });
 
 // POST Updated Incident
-router.post('/:id/update', async function (req, res) {
+router.post('/:id/update', ensureAuthenticated, async function (req, res) {
   try {
     await IncidentReport.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
@@ -77,7 +77,7 @@ router.post('/:id/update', async function (req, res) {
 });
 
 // POST Deleting Incident
-router.post('/:id/delete', async function (req, res) {
+router.post('/:id/delete', ensureAuthenticated, async function (req, res) {
   try {
     await IncidentReport.findByIdAndDelete(req.params.id);
     res.redirect('/incidents');
