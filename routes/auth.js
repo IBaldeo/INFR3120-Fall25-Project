@@ -18,7 +18,7 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
-// return login info and checks validity
+// return registered info and checks validity
 router.post('/register', async (req, res) => {
     const { name, email, password, password2 } = req.body;
 
